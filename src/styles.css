@@ -1,5 +1,9 @@
 @import url(./assets/stylesheets/fonts.css);
 
+/*-----------------------------------------------------------------------------------*/
+
+/* General Styles */
+
 :root {
     --font-stack:
         system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
@@ -12,8 +16,206 @@
     --fs-xl: clamp(1.95rem, 1.43vi + 1.67rem, 2.81rem);
     --fs-xxl: clamp(2.44rem, 2.18vi + 2.01rem, 3.75rem);
     --fs-xxxl: clamp(3.05rem, 3.24vi + 2.4rem, 5rem);
+
+    --text-primary: #050315;
+    --text-secondary: #ebe9fc;
+    --background-color: #fbfbfe;
+    --primary-color: #0043e0;
+    --secondary-color: #d0d4ff;
+    --accent-color: #020079;
+
+    --header-tile: url(./assets/media/pictures/background-light.svg);
+
+    --box-shadow-header: 0.5px 0.5px 14px 0 #7a7a7a;
+}
+
+:root.dark-mode {
+    --text-primary: #ebe9fc;
+    --text-secondary: #050315;
+    --background-color: #050509;
+    --primary-color: #0024db;
+    --secondary-color: #00042e;
+    --accent-color: #1e00b5;
+
+    --header-tile: url(./assets/media/pictures/background-dark.svg);
+
+    --box-shadow-header: 1px 1px 6px 2px #010102;
 }
 
 body {
-    font-family: var(--font-stack);
+    font-family: Geist, var(--font-stack);
+
+    height: 100svh;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+/* General Styles */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* Header Styles */
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-img-cont {
+    position: relative;
+}
+
+.header-img-background {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: -1;
+
+    background: var(--header-tile);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-img-wrapper {
+    padding: 1.25rem;
+}
+
+.header-img {
+    aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 48rem) {
+    header {
+        padding: 0.5rem;
+        position: relative;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: var(--header-tile);
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    .header-img-background {
+        display: none;
+    }
+
+    .header-img-wrapper {
+        padding: 0;
+    }
+}
+
+.header-description {
+    padding: 1rem;
+}
+
+.about-heading {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: max-content;
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+.about-heading::before {
+    content: '';
+    position: absolute;
+    bottom: 3.5%;
+    width: 100%;
+    height: 12.5%;
+    background-color: var(--primary-color);
+    opacity: 0.85;
+    transform: skewX(-45deg);
+}
+
+.header-description section {
+    max-width: 65ch;
+}
+
+.header-description p:not(:last-child) {
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.header-link {
+    display: block;
+    max-width: max-content;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.header-link > img {
+    user-select: none;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.header-link > img:hover {
+    transform: translateY(-0.15rem);
+}
+
+@media (min-width: 48rem) {
+    .header-description {
+        padding: 0.5rem;
+        background-color: var(--background-color);
+        box-shadow: var(--box-shadow-header);
+    }
+
+    .about-heading {
+        margin: 0;
+        margin-bottom: 0.5rem;
+        font-size: var(--fs-md);
+    }
+
+    .header-description p {
+        font-size: var(--fs-sm);
+    }
+
+    .header-link {
+        margin-top: 0;
+        margin-right: 0;
+    }
+
+    .header-link > img {
+        width: 18px;
+        height: 18px;
+        margin-right: 0;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 64rem) {
+    .header-link > img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .header-description p {
+        font-size: var(--fs-base);
+    }
+}
+
+/* Header Styles */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* Main Styles */
+
+/* Main Styles */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* Footer Styles */
+
+/* Footer Styles */
+
+/*-----------------------------------------------------------------------------------*/
