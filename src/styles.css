@@ -1,5 +1,9 @@
 @import url(./assets/stylesheets/fonts.css);
 
+/*-----------------------------------------------------------------------------------*/
+
+/* General Styles */
+
 :root {
     --font-stack:
         system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
@@ -12,8 +16,195 @@
     --fs-xl: clamp(1.95rem, 1.43vi + 1.67rem, 2.81rem);
     --fs-xxl: clamp(2.44rem, 2.18vi + 2.01rem, 3.75rem);
     --fs-xxxl: clamp(3.05rem, 3.24vi + 2.4rem, 5rem);
+
+    --text-primary: #050315;
+    --text-secondary: #ebe9fc;
+    --background-color: #fbfbfe;
+    --primary-color: #0043e0;
+    --secondary-color: #d0d4ff;
+    --accent-color: #020079;
+
+    --header-tile: url(./assets/media/pictures/background-light.svg);
+
+    --shadow-color: 240deg 15% 56%;
+    --shadow-elevation-medium:
+        0.3px 0.5px 0.5px hsl(var(--shadow-color) / 0.74),
+        0.6px 1.2px 1.2px -1.4px hsl(var(--shadow-color) / 0.59),
+        1.9px 3.9px 3.7px -2.8px hsl(var(--shadow-color) / 0.44),
+        5.5px 11px 10.6px -4.2px hsl(var(--shadow-color) / 0.28);
+}
+
+:root.dark-mode {
+    --text-primary: #ebe9fc;
+    --text-secondary: #050315;
+    --background-color: #050509;
+    --primary-color: #0024db;
+    --secondary-color: #00042e;
+    --accent-color: #1e00b5;
+
+    --header-tile: url(./assets/media/pictures/background-dark.svg);
 }
 
 body {
-    font-family: var(--font-stack);
+    font-family: Geist, var(--font-stack);
+
+    height: 100svh;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+/* General Styles */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* Header Styles */
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-img-cont {
+    position: relative;
+}
+
+.header-img-background {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: -1;
+
+    background: var(--header-tile);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-img-wrapper {
+    padding: 1.25rem;
+}
+
+.header-img {
+    aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 48rem) {
+    header {
+        padding: 0.5rem;
+        position: relative;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: var(--header-tile);
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    .header-img-background {
+        display: none;
+    }
+
+    .header-img-wrapper {
+        padding: 0;
+    }
+}
+
+.header-description {
+    padding: 1rem;
+}
+
+.about-heading {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: max-content;
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+.about-heading::before {
+    content: '';
+    position: absolute;
+    bottom: 3.5%;
+    width: 100%;
+    height: 12.5%;
+    background-color: var(--primary-color);
+    opacity: 0.85;
+    transform: skewX(-45deg);
+}
+
+.header-description section {
+    max-width: 65ch;
+}
+
+.header-description p {
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.header-link {
+    display: block;
+    margin-top: 1rem;
+}
+
+.header-link > img {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+}
+
+@media (min-width: 48rem) {
+    .header-description {
+        padding: 0.5rem;
+        background-color: var(--background-color);
+        box-shadow: 0.5px 0.5px 14px 0 #7a7a7a;
+    }
+
+    .about-heading {
+        margin: 0;
+        margin-bottom: 0.5rem;
+        font-size: var(--fs-md);
+    }
+
+    .header-description p {
+        font-size: var(--fs-sm);
+    }
+
+    .header-link {
+        margin-top: 0;
+    }
+
+    .header-link > img {
+        width: 18px;
+        height: 18px;
+        margin-right: 0;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 64rem) {
+        .header-link > img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Header Styles */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* Main Styles */
+
+/* Main Styles */
+
+/*-----------------------------------------------------------------------------------*/
+
+/* Footer Styles */
+
+/* Footer Styles */
+
+/*-----------------------------------------------------------------------------------*/
