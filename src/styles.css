@@ -27,6 +27,7 @@
     --header-tile: url(./assets/media/pictures/background-light.svg);
 
     --box-shadow-header: 0.5px 0.5px 14px 0 #7a7a7a;
+    --box-shadow-projects: 0px 1px 5px 0px #9b9b9b;
 }
 
 :root.dark-mode {
@@ -40,18 +41,26 @@
     --header-tile: url(./assets/media/pictures/background-dark.svg);
 
     --box-shadow-header: 1px 1px 6px 2px #010102;
+    --box-shadow-projects: 0px 1px 5px 0px #000000;
 }
 
 body {
     font-family: Geist, var(--font-stack);
 
-    height: 100svh;
+    min-height: 100svh;
     background-color: var(--background-color);
     color: var(--text-primary);
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
+}
+
+@media (min-width: 48rem) {
+    body {
+        gap: 0;
+    }
 }
 
 /* General Styles */
@@ -115,7 +124,7 @@ header {
     padding: 1rem;
 }
 
-.about-heading {
+.about-heading, .main-heading {
     margin-left: auto;
     margin-right: auto;
     max-width: max-content;
@@ -123,7 +132,7 @@ header {
     margin-bottom: 0.75rem;
 }
 
-.about-heading::before {
+.about-heading::before, .main-heading::before {
     content: '';
     position: absolute;
     bottom: 3.5%;
@@ -200,7 +209,7 @@ header {
     }
 
     .header-description p {
-        font-size: var(--fs-base);
+        font-size: var(--fs-sm);
     }
 }
 
@@ -209,6 +218,108 @@ header {
 /*-----------------------------------------------------------------------------------*/
 
 /* Main Styles */
+
+main {
+    width: 100%;
+}
+
+.projects-grid {
+    padding: 1.25rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, calc(320px - 2.5rem));
+    gap: 1.25rem;
+}
+
+.project-cont {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow-projects);
+}
+
+.project-cont > img {
+    object-fit: contain;
+    height: auto;
+}
+
+.project-description {
+    flex-grow: 1;
+    padding: 0.5rem;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-name {
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.project-name > span {
+    font-size: var(--fs-base);
+}
+
+.project-labels {
+    margin-left: auto;
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-labels > div {
+    cursor: pointer;
+    position: relative;
+}
+
+.project-labels::before,
+.project-labels::after {
+    --text-light: #ebe9fc;
+
+    content: 'Project isn\'t responsive';
+    font-size: 0.65rem;
+    padding: 0.25rem;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    position: absolute;
+    border-radius: 0.35rem;
+    top: 50%;
+    left: -120%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.project-labels::after {
+    content: 'Project isn\'t accessible';
+}
+
+.project-labels:has(.not-responsive:hover)::before,
+.project-labels:has(.not-responsive:focus)::before {
+    opacity: 1;
+}
+
+.project-labels:has(.not-accessible:hover)::after,
+.project-labels:has(.not-accessible:focus)::after {
+    opacity: 1;
+}
+
+.description-text {
+    max-width: 65ch;
+    font-size: var(--fs-sm);
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+}
+
+.project-link {
+    display: flex;
+    max-width: max-content;
+    gap: 0.15rem;
+    margin-top: auto;
+    margin-left: auto;
+}
 
 /* Main Styles */
 
