@@ -26,12 +26,7 @@
 
     --header-tile: url(./assets/media/pictures/background-light.svg);
 
-    --shadow-color: 240deg 15% 56%;
-    --shadow-elevation-medium:
-        0.3px 0.5px 0.5px hsl(var(--shadow-color) / 0.74),
-        0.6px 1.2px 1.2px -1.4px hsl(var(--shadow-color) / 0.59),
-        1.9px 3.9px 3.7px -2.8px hsl(var(--shadow-color) / 0.44),
-        5.5px 11px 10.6px -4.2px hsl(var(--shadow-color) / 0.28);
+    --box-shadow-header: 0.5px 0.5px 14px 0 #7a7a7a;
 }
 
 :root.dark-mode {
@@ -43,6 +38,8 @@
     --accent-color: #1e00b5;
 
     --header-tile: url(./assets/media/pictures/background-dark.svg);
+
+    --box-shadow-header: 1px 1px 6px 2px #010102;
 }
 
 body {
@@ -141,27 +138,36 @@ header {
     max-width: 65ch;
 }
 
-.header-description p {
+.header-description p:not(:last-child) {
     line-height: 1.5;
     margin-bottom: 0.5rem;
 }
 
 .header-link {
     display: block;
+    max-width: max-content;
     margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
 
 .header-link > img {
+    user-select: none;
     width: 32px;
     height: 32px;
-    margin: 0 auto;
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.header-link > img:hover {
+    transform: translateY(-0.15rem);
 }
 
 @media (min-width: 48rem) {
     .header-description {
         padding: 0.5rem;
         background-color: var(--background-color);
-        box-shadow: 0.5px 0.5px 14px 0 #7a7a7a;
+        box-shadow: var(--box-shadow-header);
     }
 
     .about-heading {
@@ -176,6 +182,7 @@ header {
 
     .header-link {
         margin-top: 0;
+        margin-right: 0;
     }
 
     .header-link > img {
@@ -187,9 +194,13 @@ header {
 }
 
 @media (min-width: 64rem) {
-        .header-link > img {
-        width: 24px;
-        height: 24px;
+    .header-link > img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .header-description p {
+        font-size: var(--fs-base);
     }
 }
 
