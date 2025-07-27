@@ -55,12 +55,40 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+
+    position: relative;
 }
 
 @media (min-width: 48rem) {
     body {
         gap: 0;
     }
+}
+
+.toggle-theme {
+    position: fixed;
+    top: 1.25%;
+    right: 1.25%;
+    z-index: 1;
+    background-color: var(--accent-color);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.toggle-theme:hover {
+    background-color: var(--primary-color);
+}
+
+.toggle-theme > img {
+    transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.toggle-theme:active > img {
+    opacity: 0.65;
 }
 
 /* General Styles */
