@@ -292,8 +292,9 @@ main {
     box-shadow: var(--box-shadow-projects);
 }
 
-.project-cont > img {
+.project-cont > picture > img {
     object-fit: contain;
+    width: 280px;
     height: auto;
 }
 
