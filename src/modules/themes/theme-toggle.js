@@ -5,27 +5,32 @@ import moonSvg from '../../assets/media/icons/moon.svg';
 
 function buildThemeIcon(theme, parent) {
     if (theme === 'dark') {
-        const toggleIcon = buildImgElement(moonSvg, 'Toggle Light Mode', 'theme-icon');
+        const toggleIcon = buildImgElement(
+            moonSvg,
+            'Toggle Light Mode',
+            'theme-icon'
+        );
         parent.append(toggleIcon);
         parent.ariaLabel = 'Toggle Light Mode';
     } else {
-        const toggleIcon = buildImgElement(sunSvg, 'Toggle Dark Mode', 'theme-icon');
+        const toggleIcon = buildImgElement(
+            sunSvg,
+            'Toggle Dark Mode',
+            'theme-icon'
+        );
         parent.append(toggleIcon);
         parent.ariaLabel = 'Toggle Dark Mode';
     }
 }
 
-export function toggleThemeHandler(event) {
+export function toggleThemeHandler() {
     const currentTheme = document.documentElement.classList.contains(
         'dark-mode'
     )
         ? 'dark'
         : 'light';
 
-    const { target } = event;
-    const toggleIcon = target.classList.contains('theme-icon')
-        ? target
-        : [...target.children][0];
+    const toggleIcon = document.querySelector('img.theme-icon');
     const toggleButton = toggleIcon.parentNode;
 
     toggleIcon.remove();
