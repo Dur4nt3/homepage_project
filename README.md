@@ -27,15 +27,13 @@ Therefore, there are several differences between my final design and the given d
 
 - Transitions
 
-- Keyframes
-
 - A11y (Accessibility)
 
 - WAI-ARIA
 
 - Responsive Design
 
-- Mobile-first design
+- Mobile-first Design
 
 ## Misc Information
 
